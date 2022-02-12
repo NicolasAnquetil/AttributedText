@@ -9,14 +9,13 @@ Class {
 
 { #category : #rendering }
 RSLinkEmphasisAttribute >> renderIn: aShape [
-	| startLine endLine line color label rect box |
-	color := { Color red. Color yellow. Color green } atRandom.
+	| startLine endLine line label rect box |
 	startLine := self startLine: aShape.
 	endLine := self endLine: aShape.
 	line := RSLine new
 		startPoint: startLine point;
 		endPoint: endLine point;
-		color: color;
+		color: Color black;
 		width: 1;
 		yourself.
 	aShape addShape: line.

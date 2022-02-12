@@ -70,7 +70,7 @@ fun
 
 { #category : #examples }
 RSAttributedText >> example03 [	
-	"micing TagEmphasis and LinkEmphasis on the same substring"
+	"mixing TagEmphasis and LinkEmphasis on the same substring"
 	<script: 'self new example03 open'>
 	| string |
 	string := 'context function foo base 123 context
@@ -82,7 +82,7 @@ fun
 	self text: string.
 	self tagAll: 'context' in: string with: RSTagEmphasisAttribute.
 	self tagAll: 'function' in: string with: RSLinkEmphasisAttribute.
-	self tagAll: '123' in: string with: RSTagEmphasisAttribute.
+	self tagAll: 'function' in: string with: RSTagEmphasisAttribute.
 	^ self
 	
 ]
