@@ -10,10 +10,16 @@ Class {
 	#category : #'MooseIDE-AttributedText'
 }
 
-{ #category : #initialization }
-RSTagEmphasisAttribute >> initialize [
-	super initialize.
-	color := { Color red. Color yellow. Color green } atRandom
+{ #category : #accessing }
+RSTagEmphasisAttribute >> color [
+
+	^ color
+]
+
+{ #category : #accessing }
+RSTagEmphasisAttribute >> color: anObject [
+
+	color := anObject
 ]
 
 { #category : #rendering }
