@@ -53,16 +53,21 @@ RSTagEmphasisAttribute >> newLine [
 
 { #category : #rendering }
 RSTagEmphasisAttribute >> renderIn: aShape [
-	| startLine endLine dot  lines |
+	| startLine endLine dot lines |
 	startLine := self startLine: aShape.
 	endLine := self endLine: aShape.
 	dot := RSCircle  new
-		size: 7;
+		size: 9;
 		color: color;
 		translateTo: startLine point ;
-		when: RSMouseClick send: #inspect to: self;
 		yourself.
 	aShape addShape: dot.
+	interactions keysAndValuesDo: [ :event : action | dot when: event do: action ].
+
 	lines := self lineShapesFor: aShape startLine: startLine endLine: endLine.
+	lines do: [ :lineShape |
+		dot
+			when: RSMouseEnter do: [ :evt | lineShape width: 3; signalUpdate ];
+			when: RSMouseLeave do: [ :evt | lineShape width: 1; signalUpdate ] ].
 	aShape addAll: lines.
 ]

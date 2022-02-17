@@ -12,11 +12,16 @@ Class {
 }
 
 { #category : #adding }
+RSAttributedText >> addAttribute: attribute [
+	attributes add: attribute.
+]
+
+{ #category : #adding }
 RSAttributedText >> addAttribute: attribute from: from to: to [
 	attribute
 		from: from;
 		to: to.
-	attributes add: attribute.
+	self addAttribute: attribute.
 ]
 
 { #category : #hooks }
@@ -24,6 +29,7 @@ RSAttributedText >> canvasController [
 	| c |
 	c := RSCanvasController simple.
 	c interactions removeKey: RSZoomableCanvasInteraction.
+	c interactions removeKey:  RSDraggableCanvasInteraction.
 	c interactions at: RSScrollWheelCanvasInteraction put: RSScrollWheelCanvasInteraction new.
 	c configuration 
 		padding: 10;

@@ -6,7 +6,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'from',
-		'to'
+		'to',
+		'interactions'
 	],
 	#category : #'MooseIDE-AttributedText'
 }
@@ -51,6 +52,17 @@ RSAbstractTextAttribute >> from [
 RSAbstractTextAttribute >> from: anObject [
 
 	from := anObject
+]
+
+{ #category : #initialization }
+RSAbstractTextAttribute >> initialize [
+	super initialize.
+	interactions := Dictionary new
+]
+
+{ #category : #convenience }
+RSAbstractTextAttribute >> on: anEvent do: aBlock [
+	interactions at: anEvent put: aBlock 
 ]
 
 { #category : #accessing }

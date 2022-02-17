@@ -30,6 +30,6 @@ RSLinkEmphasisAttribute >> renderIn: aShape [
 		when: RSMouseLeave do: [ :evt | line width: 1; signalUpdate ];
 		yourself.
 	aShape addShape: box.
-	
-	box when: RSMouseClick send: #inspect to: self
+
+	interactions keysAndValuesDo: [ :event : action | box when: event do: action ].
 ]
